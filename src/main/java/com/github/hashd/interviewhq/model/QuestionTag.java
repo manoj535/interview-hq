@@ -1,5 +1,7 @@
 package com.github.hashd.interviewhq.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -38,6 +40,7 @@ public class QuestionTag {
     this.id = id;
   }
 
+  @JsonIgnore
   @ManyToOne(targetEntity = Question.class, cascade = CascadeType.ALL)
   @JoinColumn(name = "question_id")
   public Question getQuestion() {
@@ -48,6 +51,7 @@ public class QuestionTag {
     this.question = question;
   }
 
+  @JsonIgnore
   @ManyToOne(targetEntity = Tag.class, cascade = CascadeType.ALL)
   @JoinColumn(name = "tag_id")
   public Tag getTag() {

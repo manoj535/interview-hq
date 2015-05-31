@@ -1,5 +1,7 @@
 package com.github.hashd.interviewhq.model;
 
+import com.github.hashd.interviewhq.model.enums.Difficulty;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -11,27 +13,22 @@ import java.util.Set;
 @Entity
 @Table(name = "questions")
 public class Question {
-  private Long   id;
-  private String content;
-  private Date   createdOn;
-  private Date   lastModifiedOn;
+  private Long       id;
+  private String     content;
+  private Difficulty difficulty;
+  private Date       createdOn;
+  private Date       lastModifiedOn;
 
   private Set<QuestionTag> questionTags;
 
   public Question() {
   }
 
-  public Question(String content, Date createdOn, Date lastModifiedOn) {
+  public Question(String content, Difficulty difficulty) {
     this.content = content;
-    this.createdOn = createdOn;
-    this.lastModifiedOn = lastModifiedOn;
-  }
-
-  public Question(Long id, String content, Date createdOn, Date lastModifiedOn) {
-    this.id = id;
-    this.content = content;
-    this.createdOn = createdOn;
-    this.lastModifiedOn = lastModifiedOn;
+    this.difficulty = difficulty;
+    this.createdOn = new Date();
+    this.lastModifiedOn = new Date();
   }
 
   @Id
@@ -52,6 +49,16 @@ public class Question {
 
   public void setContent(String content) {
     this.content = content;
+  }
+
+  @Enumerated(EnumType.STRING)
+  @Column(columnDefinition = "enum('EASY', 'MEDIUM', 'HARD')")
+  public Difficulty getDifficulty() {
+    return difficulty;
+  }
+
+  public void setDifficulty(Difficulty difficulty) {
+    this.difficulty = difficulty;
   }
 
   @Column(name = "creation_date")
