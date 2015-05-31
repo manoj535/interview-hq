@@ -12,10 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashSet;
 
 @SpringBootApplication
-public class InterviewHqApplication implements CommandLineRunner {
+public class InterviewHQ implements CommandLineRunner {
   @Autowired
   private QuestionTagRepository questionTagRepository;
 
@@ -23,7 +22,7 @@ public class InterviewHqApplication implements CommandLineRunner {
   private QuestionRepository questionRepository;
 
   public static void main(String[] args) {
-    SpringApplication.run(InterviewHqApplication.class, args);
+    SpringApplication.run(InterviewHQ.class, args);
   }
 
   @Override
