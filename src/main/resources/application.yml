@@ -1,0 +1,18 @@
+spring:
+  freemarker:
+    checkTemplateLocation: false
+
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate.ddl-auto: create-drop
+
+  datasource:
+    database: mysql
+    url: jdbc:mysql://localhost/interview_hq
+    username: boot_u
+    password: b00t!ful
+
+logging:
+  level:
+
