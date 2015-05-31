@@ -83,7 +83,7 @@ public class Tag {
     this.lastModifiedOn = lastModifiedOn;
   }
 
-  @OneToMany(mappedBy = "tag", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY)
   public Set<QuestionTag> getQuestionTags() {
     return questionTags;
   }

@@ -59,7 +59,6 @@ public class QuestionVO {
     this.difficulty = difficulty;
   }
 
-  @JsonSerialize(using = JsonDateSerializer.class)
   public Date getCreatedOn() {
     return createdOn;
   }
@@ -68,7 +67,6 @@ public class QuestionVO {
     this.createdOn = createdOn;
   }
 
-  @JsonSerialize(using = JsonDateSerializer.class)
   public Date getLastModifiedOn() {
     return lastModifiedOn;
   }

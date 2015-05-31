@@ -1,4 +1,7 @@
 spring:
+  main:
+    show-banner: false
+
   freemarker:
     checkTemplateLocation: false
 
@@ -13,9 +16,14 @@ spring:
     username: boot_u
     password: b00t!ful
 
+  jackson:
+    date-format: "yyyy-MM-dd HH:mm:ss"
+
 logging:
+  file: interview_hq.log
+
   level:
-    org.springframework.web: DEBUG
+    org.springframework.web: INFO
     org.hibernate: ERROR
 
 server:

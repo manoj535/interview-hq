@@ -2,9 +2,17 @@ package com.github.hashd.interviewhq.model;
 
 import com.github.hashd.interviewhq.model.enums.Difficulty;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -16,6 +24,7 @@ public class Question {
   private Long       id;
   private String     content;
   private Difficulty difficulty;
+  private User       postedBy;
   private Date       createdOn;
   private Date       lastModifiedOn;
 
@@ -79,7 +88,7 @@ public class Question {
     this.lastModifiedOn = lastModifiedOn;
   }
 
-  @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
   public Set<QuestionTag> getQuestionTags() {
     return questionTags;
   }

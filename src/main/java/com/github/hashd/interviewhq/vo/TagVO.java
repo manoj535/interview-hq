@@ -60,7 +60,6 @@ public class TagVO {
     this.description = description;
   }
 
-  @JsonSerialize(using = JsonDateSerializer.class)
   public Date getCreatedOn() {
     return createdOn;
   }
@@ -69,7 +68,6 @@ public class TagVO {
     this.createdOn = createdOn;
   }
 
-  @JsonSerialize(using = JsonDateSerializer.class)
   public Date getLastModifiedOn() {
     return lastModifiedOn;
   }
