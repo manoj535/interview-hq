@@ -1,0 +1,34 @@
+spring:
+  main:
+    show-banner: false
+
+  freemarker:
+    checkTemplateLocation: false
+
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate.ddl-auto: create-drop
+
+  datasource:
+    database: mysql
+    url: jdbc:mysql://localhost/interview_hq
+    username: boot_u
+    password: b00t!ful
+
+  jackson:
+    date-format: "yyyy-MM-dd HH:mm:ss"
+
+logging:
+  file: interview_hq.log
+
+  level:
+    org.springframework.web: INFO
+    org.hibernate: ERROR
+
+server:
+  port: 8080
+
+security:
+  user:
+    password: password
