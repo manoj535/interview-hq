@@ -2,6 +2,7 @@ package com.github.hashd.interviewhq.model;
 
 import com.github.hashd.interviewhq.model.enums.Difficulty;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -100,7 +101,7 @@ public class Question {
     this.questionTags = questionTags;
   }
   
-  @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "question", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
   public List<Answer> getAnswers() {
 		return answers;
   }

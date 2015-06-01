@@ -23,6 +23,11 @@ public class Answer {
 	public Answer() {
 		
 	}
+	public Answer(Question question, String content) {
+	    this.setId(id);
+	    this.setQuestion(question);
+	    this.setContent(content);
+	}
 	
 	public Answer(Long id, Question question, String content) {
 	    this.setId(id);
@@ -53,22 +58,12 @@ public class Answer {
 	@JsonIgnore
 	@ManyToOne(targetEntity = Question.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "question_id")
-	
 	public Question getQuestion() {
 		return question;
 	}
 
 	public void setQuestion(Question question) {
 		this.question = question;
-	}
-
-	
-	public User getPostedBy() {
-		return postedBy;
-	}
-
-	public void setPostedBy(User postedBy) {
-		this.postedBy = postedBy;
 	}
 	
 }
