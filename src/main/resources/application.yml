@@ -8,6 +8,8 @@ spring:
 
   thymeleaf:
     enabled: true
+    #Support hot deployment of thymeleaf templates
+    cache: false
 
   jpa:
     database: mysql

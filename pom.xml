@@ -12,10 +12,12 @@
   <description>Demo project to get a hang of Spring boot</description>
 
   <properties>
-    <spring.boot.starter.version>1.2.3.RELEASE</spring.boot.starter.version>
+    <java.version>1.8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <start-class>com.github.hashd.interviewhq.InterviewHQ</start-class>
-    <java.version>1.8</java.version>
+    <mysql.connector.version>5.1.35</mysql.connector.version>
+    <spring.boot.starter.version>1.2.3.RELEASE</spring.boot.starter.version>
+    <spring.loaded.version>1.2.3.RELEASE</spring.loaded.version>
   </properties>
 
   <dependencyManagement>
@@ -34,45 +36,38 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
-      <version>${spring.boot.starter.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
-      <version>${spring.boot.starter.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-rest</artifactId>
-      <version>${spring.boot.starter.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jdbc</artifactId>
-      <version>${spring.boot.starter.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
-      <version>${spring.boot.starter.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <version>${spring.boot.starter.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
-      <version>${spring.boot.starter.version}</version>
     </dependency>
-    
+
 
     <!-- Runtime dependencies -->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.35</version>
+      <version>${mysql.connector.version}</version>
       <scope>runtime</scope>
     </dependency>
 
@@ -80,7 +75,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
-      <version>${spring.boot.starter.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -104,7 +98,7 @@
           <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>springloaded</artifactId>
-            <version>1.2.0.RELEASE</version>
+            <version>${spring.loaded.version}</version>
           </dependency>
         </dependencies>
         <executions>
@@ -113,7 +107,12 @@
               <goal>repackage</goal>
             </goals>
           </execution>
-        </executions>
+        </executions><!--
+        <configuration>
+          <jvmArguments>
+            -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
+          </jvmArguments>
+        </configuration>-->
       </plugin>
     </plugins>
   </build>
