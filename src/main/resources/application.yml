@@ -1,9 +1,9 @@
 spring:
   main:
     show-banner: false
-
-  freemarker:
-    checkTemplateLocation: false
+  
+  thymeleaf:
+    enabled: true
 
   jpa:
     database: mysql

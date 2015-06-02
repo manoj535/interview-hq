@@ -2,6 +2,7 @@ package com.github.hashd.interviewhq.model;
 
 import com.github.hashd.interviewhq.model.enums.Difficulty;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,7 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -29,6 +32,7 @@ public class Question {
   private Date       lastModifiedOn;
 
   private Set<QuestionTag> questionTags;
+  private List<Answer> answers;
 
   public Question() {
   }
@@ -96,7 +100,16 @@ public class Question {
   public void setQuestionTags(Set<QuestionTag> questionTags) {
     this.questionTags = questionTags;
   }
-
+  
+  @OneToMany(mappedBy = "question", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+  public List<Answer> getAnswers() {
+		return answers;
+  }
+  
+  public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+  }
+  
   @Override
   public String toString() {
     return "Question{" +
@@ -107,4 +120,6 @@ public class Question {
       ", questionTags=" + questionTags +
       '}';
   }
+
+
 }
