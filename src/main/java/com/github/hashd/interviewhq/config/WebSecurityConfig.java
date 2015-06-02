@@ -1,5 +1,6 @@
 package com.github.hashd.interviewhq.config;
 
+import com.github.hashd.interviewhq.model.auth.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,9 +36,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder)
+    // TODO: Handle password encoding in a better way
+    auth
+      .jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder)
       .usersByUsernameQuery("select username, password, enabled from users where username = ?")
-      .authoritiesByUsernameQuery("select u.username, ur.role from user_roles ur inner join users u on u.user_id = ur.user_id and username = ?");
+      .authoritiesByUsernameQuery("select u.username, ur.role from user_roles ur inner join users u on u.user_id = ur.user_id and username = ?")
+    .and()
+      .inMemoryAuthentication().withUser("user").password("password").roles(Role.USER.name());
   }
 
   @Bean
