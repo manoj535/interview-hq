@@ -5,10 +5,16 @@ import com.github.hashd.interviewhq.model.Comment;
 import com.github.hashd.interviewhq.model.Question;
 import com.github.hashd.interviewhq.model.QuestionTag;
 import com.github.hashd.interviewhq.model.Tag;
+import com.github.hashd.interviewhq.model.auth.Role;
+import com.github.hashd.interviewhq.model.auth.User;
+import com.github.hashd.interviewhq.model.auth.UserRole;
 import com.github.hashd.interviewhq.model.enums.Difficulty;
+import com.github.hashd.interviewhq.model.enums.Gender;
 import com.github.hashd.interviewhq.repository.QuestionRepository;
 import com.github.hashd.interviewhq.repository.QuestionTagRepository;
 
+import com.github.hashd.interviewhq.repository.UserRepository;
+import com.github.hashd.interviewhq.repository.UserRoleRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,15 +24,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Arrays;
 import java.util.Date;
 
 @SpringBootApplication
 public class InterviewHQ implements CommandLineRunner {
+  @Autowired
+  private PasswordEncoder passwordEncoder;
 
   @Bean
-  InitializingBean populateTestData(QuestionTagRepository questionTagRepository) {
+  InitializingBean populateTestData(QuestionTagRepository questionTagRepository, UserRoleRepository userRoleRepository) {
     return () -> {
       SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken("user", "n/a", AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER")));
 
@@ -54,6 +64,11 @@ public class InterviewHQ implements CommandLineRunner {
       q2.setComments(Arrays.asList(c3));
 
       questionTagRepository.save(Arrays.<QuestionTag>asList(qt1, qt2, qt3));
+
+      // Creating new user
+      User u = new User("test", passwordEncoder.encode("test1234"), "Test User", Gender.MALE, new Date(), "test@interviewhq.com", "9876543210", true);
+      UserRole ur = new UserRole(u, Role.USER.toString());
+      userRoleRepository.save(ur);
     };
   }
 

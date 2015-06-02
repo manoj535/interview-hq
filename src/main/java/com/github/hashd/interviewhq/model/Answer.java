@@ -1,6 +1,7 @@
 package com.github.hashd.interviewhq.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.hashd.interviewhq.model.auth.User;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

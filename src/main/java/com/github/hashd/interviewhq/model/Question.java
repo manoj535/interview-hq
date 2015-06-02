@@ -1,5 +1,6 @@
 package com.github.hashd.interviewhq.model;
 
+import com.github.hashd.interviewhq.model.auth.User;
 import com.github.hashd.interviewhq.model.enums.Difficulty;
 
 import javax.persistence.CascadeType;
