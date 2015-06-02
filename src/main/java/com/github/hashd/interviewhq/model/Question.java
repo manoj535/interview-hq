@@ -13,7 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -32,7 +31,8 @@ public class Question {
   private Date       lastModifiedOn;
 
   private Set<QuestionTag> questionTags;
-  private List<Answer> answers;
+  private List<Answer>     answers;
+  private List<Comment>    comments;
 
   public Question() {
   }
@@ -92,7 +92,7 @@ public class Question {
     this.lastModifiedOn = lastModifiedOn;
   }
 
-  @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   public Set<QuestionTag> getQuestionTags() {
     return questionTags;
   }
@@ -100,16 +100,25 @@ public class Question {
   public void setQuestionTags(Set<QuestionTag> questionTags) {
     this.questionTags = questionTags;
   }
-  
-  @OneToMany(mappedBy = "question", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+
+  @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   public List<Answer> getAnswers() {
-		return answers;
+    return answers;
   }
-  
+
   public void setAnswers(List<Answer> answers) {
-		this.answers = answers;
+    this.answers = answers;
   }
-  
+
+  @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  public List<Comment> getComments() {
+    return comments;
+  }
+
+  public void setComments(List<Comment> comments) {
+    this.comments = comments;
+  }
+
   @Override
   public String toString() {
     return "Question{" +

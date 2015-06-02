@@ -1,7 +1,11 @@
+application:
+  name: "Interview HQ"
+  code: interview_hq
+
 spring:
   main:
     show-banner: false
-  
+
   thymeleaf:
     enabled: true
 
@@ -11,6 +15,7 @@ spring:
     hibernate.ddl-auto: create-drop
 
   datasource:
+    name: interview_hq
     database: mysql
     url: jdbc:mysql://localhost/interview_hq
     username: boot_u
@@ -19,8 +24,12 @@ spring:
   jackson:
     date-format: "yyyy-MM-dd HH:mm:ss"
 
+  data:
+    rest:
+      base-uri: /data/rest/v1/
+
 logging:
-  file: interview_hq.log
+  file: ${application.code}.log
 
   level:
     org.springframework.web: INFO

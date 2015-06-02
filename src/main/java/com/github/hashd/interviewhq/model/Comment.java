@@ -13,35 +13,35 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.Date;
 
+/**
+ * Created by kd on 2/6/15.
+ */
 @Entity
-@Table(name = "answers")
-public class Answer {
+@Table(name = "comments")
+public class Comment {
   private Long     id;
-  private Question question;
-  private String   content;
+  private String   comment;
   private User     postedBy;
+  private Question question;
   private Date     createdOn;
   private Date     lastModifiedOn;
 
-  public Answer() {
-
+  public Comment() {
   }
 
-  public Answer(Question question, String content) {
-    this.setId(id);
-    this.setQuestion(question);
-    this.setContent(content);
+  public Comment(Question question, String comment) {
+    this.comment = comment;
+    this.question = question;
   }
 
-  public Answer(Long id, Question question, String content) {
-    this.setId(id);
-    this.setQuestion(question);
-    this.setContent(content);
+  public Comment(Question question, String comment, User postedBy) {
+    this.comment = comment;
+    this.postedBy = postedBy;
   }
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "answer_id")
+  @Column(name = "comment_id")
   public Long getId() {
     return id;
   }
@@ -50,24 +50,13 @@ public class Answer {
     this.id = id;
   }
 
-  @Column(name = "content", length = 65536)
-  public String getContent() {
-    return content;
+  @Column(name = "comment", length = 65536)
+  public String getComment() {
+    return comment;
   }
 
-  public void setContent(String content) {
-    this.content = content;
-  }
-
-  @JsonIgnore
-  @ManyToOne(targetEntity = Question.class, cascade = CascadeType.ALL)
-  @JoinColumn(name = "question_id")
-  public Question getQuestion() {
-    return question;
-  }
-
-  public void setQuestion(Question question) {
-    this.question = question;
+  public void setComment(String comment) {
+    this.comment = comment;
   }
 
   @Column(name = "creation_date")
@@ -86,5 +75,16 @@ public class Answer {
 
   public void setLastModifiedOn(Date lastModifiedOn) {
     this.lastModifiedOn = lastModifiedOn;
+  }
+
+  @JsonIgnore
+  @ManyToOne(targetEntity = Question.class, cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "question_id")
+  public Question getQuestion() {
+    return question;
+  }
+
+  public void setQuestion(Question question) {
+    this.question = question;
   }
 }

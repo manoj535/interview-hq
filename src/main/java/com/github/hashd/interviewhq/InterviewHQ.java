@@ -1,6 +1,7 @@
 package com.github.hashd.interviewhq;
 
 import com.github.hashd.interviewhq.model.Answer;
+import com.github.hashd.interviewhq.model.Comment;
 import com.github.hashd.interviewhq.model.Question;
 import com.github.hashd.interviewhq.model.QuestionTag;
 import com.github.hashd.interviewhq.model.Tag;
@@ -40,11 +41,18 @@ public class InterviewHQ implements CommandLineRunner {
       QuestionTag qt1 = new QuestionTag(q1, t1);
       QuestionTag qt2 = new QuestionTag(q2, t2);
       QuestionTag qt3 = new QuestionTag(q3, t3);
-      
+
       Answer a1 = new Answer(q1, "answer to q1");
-      Answer a2 = new Answer(q1, "answer to q1");
-      
+      Answer a2 = new Answer(q1, "improved answer to q1");
+
+      Comment c1 = new Comment(q1, "Nice question!");
+      Comment c2 = new Comment(q1, "Too difficult for someone with that experience");
+      Comment c3 = new Comment(q2, "This is easy!");
+
       q1.setAnswers(Arrays.asList(a1, a2));
+      q1.setComments(Arrays.asList(c1, c2));
+      q2.setComments(Arrays.asList(c3));
+
       questionTagRepository.save(Arrays.<QuestionTag>asList(qt1, qt2, qt3));
     };
   }
