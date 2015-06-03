@@ -12,7 +12,6 @@ spring:
   thymeleaf:
     check-template-location: true
     enabled: true
-    #Support hot deployment of thymeleaf templates
     cache: false
 
   jpa:
