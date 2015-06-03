@@ -16,12 +16,6 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebMvcSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-  @Autowired
-  private PasswordEncoder encoder;
-
-  @Autowired
-  private DataSource dataSource;
-
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
@@ -35,21 +29,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   }
 
   @Autowired
-  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+  public void configureGlobal(AuthenticationManagerBuilder auth, PasswordEncoder passwordEncoder, @SuppressWarnings("SpringJavaAutowiringInspection") DataSource dataSource) throws Exception {
     // TODO: Handle password encoding in a better way
     auth
-      .jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder)
+      .jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder)
       .usersByUsernameQuery("select username, password, enabled from users where username = ?")
       .authoritiesByUsernameQuery("select u.username, ur.role from user_roles ur inner join users u on u.user_id = ur.user_id and username = ?")
-    .and()
+      .and()
       .inMemoryAuthentication().withUser("user").password("password").roles(Role.USER.name());
   }
 
   @Bean
   public PasswordEncoder passwordEncoder() {
-    if (encoder == null) {
-      encoder = new BCryptPasswordEncoder();
-    }
-    return encoder;
+    return new BCryptPasswordEncoder(13);
   }
 }
