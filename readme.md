@@ -1,5 +1,5 @@
 # Interview HQ
-[![Build Status](https://travis-ci.org/hashd/interview-hq.svg?branch=master)](https://travis-ci.org/hashd/interview-hq)
+[![Build Status](https://travis-ci.org/hashd/interview-hq.svg?branch=master)](https://travis-ci.org/hashd/interview-hq) ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 This is a simple web application built using Spring boot to hold a pool of interview questions within an organization with security enabled.
 
