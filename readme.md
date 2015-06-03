@@ -1,4 +1,6 @@
 # Interview HQ
+[![Build Status](https://travis-ci.org/hashd/interview-hq.svg?branch=master)](https://travis-ci.org/hashd/interview-hq)
+
 This is a simple web application built using Spring boot to hold a pool of interview questions within an organization with security enabled.
 
 #### Login details
