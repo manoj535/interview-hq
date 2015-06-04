@@ -21,17 +21,16 @@ body > section {
 aside {
   vertical-align: middle;
   width: 75%;
-  background-color: #d6254d;
+  background-color: #005F6B;
   background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
 }
 
 aside h4.title {
-  font-size: 5em;
+  font-size: 6em;
   text-align: right;
   padding: 20px;
-  color: #fff;
+  color: #00DFFC;
   padding-right: 1em;
-  text-shadow: -2px 0px #333;
 }
 
 section {
@@ -40,19 +39,23 @@ section {
   box-shadow: -4px 0 12px #333;
   width: 25%;
   min-width: 240px;
-  background-color: #9E0C39;
+  background-color: #008C9E;
+  background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
   color: #fff;
   padding: 30px;
   vertical-align: middle;
 }
 
 .login-form {
-  padding: 2em;
-  background-color: #FF5475;
+  padding: 1.5em;
+/*  background-color: #00B4CC;*/
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 
 .login-form label {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.8em;
   display: block;
 }
 
@@ -66,9 +69,30 @@ section {
   padding: 4px 8px;
   min-width: 100px;
   display: inline-block;
+  border: none;
+  border: 1px solid #00B4CC;
+  color: #008C9E;
+  background: #FAFAFA;
 }
+
+.login-form label input:focus {
+  outline: none;
+  border: 1px solid #00DFFC;
+  background: #fff;
+}
+
 
 .login-form .note {
   padding: 4px;
   text-align: center;
+}
+
+.login-form input[type="submit"] {
+  font-family: "Roboto", "Arial";
+  padding: 8px 24px;
+  background-color: #005F6B;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  margin-top: 10px;
 }
