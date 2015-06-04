@@ -7,25 +7,25 @@ body {
   height: 100vh;
   width: 100vw;
   background: #FFF;
-  font-family: "Roboto", "Arial";
+  font-family: "Droid Sans", "Roboto", "Arial";
+  display: table;
 }
 
 body > aside,
 body > section {
-  display: inline-block;
+  display: table-cell;
   height: 100%;
-  vertical-align: top;
   margin: 0;
 }
 
 aside {
+  vertical-align: middle;
   width: 75%;
   background-color: #d6254d;
   background-image: url(http://www.transparenttextures.com/patterns/cubes.png);
 }
 
 aside h4.title {
-  margin-top: 45vh;
   font-size: 5em;
   text-align: right;
   padding: 20px;
@@ -35,17 +35,40 @@ aside h4.title {
 }
 
 section {
-  /*-webkit-box-shadow: -4px 0 12px #333;
+  -webkit-box-shadow: -4px 0 12px #333;
   -moz-box-shadow: -4px 0 12px #333;
-  box-shadow: -4px 0 12px #333;*/
-  margin-left: -5px !important;
+  box-shadow: -4px 0 12px #333;
   width: 25%;
   min-width: 240px;
-  background-color: #FF5475;
+  background-color: #9E0C39;
   color: #fff;
   padding: 30px;
+  vertical-align: middle;
 }
 
-form {
-  margin-top: 50%;
+.login-form {
+  padding: 2em;
+  background-color: #FF5475;
+}
+
+.login-form label {
+  margin-bottom: 0.5em;
+  display: block;
+}
+
+.login-form label span {
+  width: 100px;
+  display: inline-block;
+}
+
+.login-form label input {
+  font-size: 1.3em;
+  padding: 4px 8px;
+  min-width: 100px;
+  display: inline-block;
+}
+
+.login-form .note {
+  padding: 4px;
+  text-align: center;
 }
