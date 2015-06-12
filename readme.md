@@ -1,4 +1,6 @@
 # Interview HQ
+
+[![Join the chat at https://gitter.im/hashd/interview-hq](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hashd/interview-hq?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/hashd/interview-hq.svg?branch=master)](https://travis-ci.org/hashd/interview-hq) ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 This is a simple web application built using Spring boot to hold a pool of interview questions within an organization with security enabled.
