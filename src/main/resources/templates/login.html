@@ -26,6 +26,9 @@
           <div><label><span>Password: </span><input type="password" name="password"/> </label></div>
           <div><input type="submit" value="Sign In"/></div>
         </form>
+        <form th:action="@{/signin}" method="post">
+        	<div><input type="submit" value="Sign With Gmail"/></div>
+        </form>
       </div>
     </section>
   </body>
