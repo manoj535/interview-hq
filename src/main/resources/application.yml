@@ -43,7 +43,7 @@ logging:
     org.hibernate: ERROR
 
 server:
-  port: 8089
+  port: 8080
 
 flyway:
   enabled: true
